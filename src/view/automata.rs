@@ -15,7 +15,7 @@ pub mod automata{
     impl ValidarCFE {
         pub fn estado_0(&mut self){
             self.valid = String::from("2");
-            if self.text_entry.len() == 30 {
+            if self.text_entry.len() == 30 && !self.text_entry.contains(" ") {
                 if self.slide_entry[0..1].trim() == "0"{
                     self.slide_entry = self.slide_entry[1..].to_string();
                     self.estado_1();

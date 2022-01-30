@@ -1,11 +1,9 @@
 pub mod style {
 
-    use iced::{
-        button, text_input,
-    };
+    use iced::{button, container, text_input};
 
     #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-    pub enum Theme{
+    pub enum Theme {
         Light,
         Dark,
     }
@@ -38,15 +36,24 @@ pub mod style {
         }
     }
 
+    impl<'a> From<Theme> for Box<dyn container::StyleSheet + 'a> {
+        fn from(theme: Theme) -> Self {
+            match theme {
+                Theme::Light => light::Container.into(),
+                Theme::Dark => Default::default(),
+            }
+        }
+    }
+
     mod light {
-        use iced::{button, Color, Vector};
+        use iced::{button, container, Color, Vector};
 
         pub struct Button;
 
         impl button::StyleSheet for Button {
             fn active(&self) -> button::Style {
                 button::Style {
-                    background: Color::from_rgb(0.11, 0.42, 0.87).into(),
+                    background: Color::from_rgb(15.0, 15.0, 27.0).into(),
                     border_radius: 8.0,
                     shadow_offset: Vector::new(1.0, 1.0),
                     text_color: Color::from_rgb8(0xEE, 0xEE, 0xEE),
@@ -62,12 +69,22 @@ pub mod style {
                 }
             }
         }
+
+        pub struct Container;
+
+        impl container::StyleSheet for Container {
+            fn style(&self) -> container::Style {
+                container::Style {
+                    background: Color::from_rgb(15.0, 15.0, 27.0).into(),
+                    text_color: Color::from_rgb(77.0, 77.0, 255.0).into(),
+                    ..container::Style::default()
+                }
+            }
+        }
     }
 
     mod dark {
-        use iced::{
-            button, text_input, Color
-        };
+        use iced::{button, text_input, Color};
 
         const SURFACE: Color = Color::from_rgb(
             0x40 as f32 / 255.0,
@@ -92,10 +109,6 @@ pub mod style {
             0x7B as f32 / 255.0,
             0xC4 as f32 / 255.0,
         );
-
-      
-
-       
 
         pub struct TextInput;
 
@@ -166,7 +179,5 @@ pub mod style {
                 }
             }
         }
-
     }
-
 }
