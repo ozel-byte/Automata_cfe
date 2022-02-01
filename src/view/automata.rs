@@ -49,9 +49,21 @@ pub mod automata{
             let self_number: Result<i64,_> = self.slide_entry[..12].trim().parse();
             match self_number {
                 Ok(_v) => {
-                    if  self.slide_entry[..12].to_string() != "000000000000" {
-                        self.slide_entry = self.slide_entry[12..].to_string();
-                        self.estado_3();
+                    let mut bandera = 0;
+                    let mut bandera_2 = false;
+                    for item in 0..12{
+                        if NUMBERS2.contains(self.slide_entry[item..item+1].trim()){
+                            bandera += 1;
+                            if self.slide_entry[item..item+1].trim() != "0"{
+                                bandera_2 = true;
+                            }
+                        }
+                    }
+                    if bandera == 12{
+                        if self.slide_entry[11..12].trim() != "0" || bandera_2{
+                            self.slide_entry = self.slide_entry[12..].to_string();
+                            self.estado_3();
+                        }
                     }
                 },
                 Err(_e) => {
