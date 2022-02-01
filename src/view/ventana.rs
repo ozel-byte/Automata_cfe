@@ -97,13 +97,13 @@ impl Sandbox for AutomataCfe {
                         .horizontal_alignment(HorizontalAlignment::Center)
                         .color(Color::from_rgb(0.1, 0.1, 0.1)),
                 )
-                .push(Text::new(&self.number).horizontal_alignment(HorizontalAlignment::Center).color(Color::from_rgb(0.1,0.1,0.1)))
+                .push(Text::new(&self.number).horizontal_alignment(HorizontalAlignment::Center).color(Color::from_rgb(65.0/255.0,90.0/255.0,109.0/255.0)))
                 .push(Text::new("Numero de servicio").color(Color::from_rgb(0.1,0.1,0.1)))
-                .push(Text::new(&self.service_number).color(Color::from_rgb(0.1,0.1,0.1)))
+                .push(Text::new(&self.service_number).color(Color::from_rgb(65.0/255.0,90.0/255.0,109.0/255.0)))
                 .push(Text::new("Fecha").color(Color::from_rgb(0.1,0.1,0.1)))
-                .push(Text::new(&self.date).color(Color::from_rgb(0.1,0.1,0.1)))
+                .push(Text::new(&self.date).color(Color::from_rgb(65.0/255.0,90.0/255.0,109.0/255.0)))
                 .push(Text::new("Importe").color(Color::from_rgb(0.1,0.1,0.1)))
-                .push(Text::new(&self.price).color(Color::from_rgb(0.1,0.1,0.1)))
+                .push(Text::new(&self.price).color(Color::from_rgb(65.0/255.0,90.0/255.0,109.0/255.0)))
                 .spacing(20)
         } else {
             Column::new().push(
@@ -122,7 +122,7 @@ impl Sandbox for AutomataCfe {
 
         let column_component_welcome = Column::new()
             .push(
-                Text::new("Bienvenido, :)")
+                Text::new("Bienvenido :)")
                     .size(40)
                     .color(Color::from_rgb(0.1, 0.1, 0.1)),
             )

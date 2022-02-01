@@ -153,7 +153,7 @@ pub mod automata{
             self.service_number = self.text_entry[2..14].to_string();
             //self.date_paid = self.text_entry[14..20].to_string();
             self.date_paid = self.text_entry[14..16].to_string() + "-" + &self.text_entry[16..18].to_string() + "-" + &self.text_entry[18..20].to_string();
-            self.amount_paid = (self.text_entry[20..29].parse::<i32>().unwrap()).to_string();
+            self.amount_paid = "$".to_string() + &(self.text_entry[20..29].parse::<i32>().unwrap()).to_string();
 
             self.valid = String::from("1");
             println!("numero de recibo: {}", self.text_entry);
