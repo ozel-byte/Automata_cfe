@@ -128,7 +128,7 @@ impl Sandbox for AutomataCfe {
             )
             .push(
                 Text::new(
-                    "Programa que muestra el N. servicio y el importe y fecha de su recibo de luz",
+                    "Programa que muestra el N. servicio, el importe y fecha de su recibo de luz",
                 )
                 .color(Color::from_rgb(129.0 / 255.0, 129.0 / 255.0, 135.0 / 255.0))
                 .size(15),
