@@ -68,7 +68,7 @@ impl Sandbox for AutomataCfe {
             .push(
                 TextInput::new(
                     &mut self.input.input,
-                    "Type the code",
+                    "Escribir codigo",
                     &self.input.input_value,
                     Message::DataInputChanged,
                 )
@@ -78,7 +78,7 @@ impl Sandbox for AutomataCfe {
             .push(
                 Button::new(
                     &mut self.button_validation.btn,
-                    Text::new("Check")
+                    Text::new("Verificar codigo")
                         .horizontal_alignment(HorizontalAlignment::Center)
                         .vertical_alignment(iced::VerticalAlignment::Center),
                 )
