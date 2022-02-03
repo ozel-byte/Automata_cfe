@@ -4,7 +4,7 @@ use iced::{
 };
 
 use super::{automata, button_next, style_v2, text_input_enter};
-
+use test;
 #[derive(Default)]
 pub struct AutomataCfe {
     input: text_input_enter::TextInputEnter,
@@ -49,11 +49,12 @@ impl Sandbox for AutomataCfe {
                     service_number: String::new(),
                 };
 
-                run_automata.estado_0();
+                // run_automata.estado_0();
                 //numero completo
                 //Numero de servicio
                 //Fecha
                 //Importe
+              //  test::test::prueba_c2();
                 self.service_number = run_automata.service_number;
                 self.price = run_automata.amount_paid;
                 self.date = run_automata.date_paid;
