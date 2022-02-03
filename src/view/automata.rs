@@ -161,11 +161,18 @@ pub mod automata{
 
     impl E8 for ValidarCFE{
         fn estado_8(&mut self) {
-
             self.service_number = self.text_entry[2..14].to_string();
             //self.date_paid = self.text_entry[14..20].to_string();
             self.date_paid = self.text_entry[14..16].to_string() + "-" + &self.text_entry[16..18].to_string() + "-" + &self.text_entry[18..20].to_string();
-            self.amount_paid = "$".to_string() + &(self.text_entry[20..29].parse::<i32>().unwrap()).to_string();
+            let importe_aux = self.text_entry[20..29].parse::<i32>().unwrap();
+            let aux = importe_aux.to_string();
+            if importe_aux.to_string().len() > 3 && importe_aux.to_string().len() <= 6{
+                self.amount_paid = "$".to_string() + &aux[..importe_aux.to_string().len()-3] + "," + &aux[importe_aux.to_string().len()-3..]
+            } else if importe_aux.to_string().len() > 6{
+                self.amount_paid = "$".to_string() + &aux[..importe_aux.to_string().len()-6] + "," + &aux[importe_aux.to_string().len()-6..importe_aux.to_string().len()-3] + "," + &aux[importe_aux.to_string().len()-3..]
+            } else {
+                self.amount_paid = "$".to_string() + &aux;
+            }
 
             self.valid = String::from("1");
             println!("numero de recibo: {}", self.text_entry);
